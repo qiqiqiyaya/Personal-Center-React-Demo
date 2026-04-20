@@ -47,7 +47,7 @@ const BuilderShell: React.FC = () => {
           Template Builder
         </span>
         <Space>
-          <ModeSwitch />
+          <ModeSwitch dark />
           <Tooltip title="Export JSON">
             <Button icon={<DownloadOutlined />} onClick={handleExport} type="default" size="small">
               Export

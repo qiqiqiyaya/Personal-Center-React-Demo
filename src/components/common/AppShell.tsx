@@ -6,6 +6,7 @@ import type { RootState, AppDispatch } from '../../store';
 import { setSelectedPageId } from '../../store/slices/editorSlice';
 import RuntimePage from '../runtime/RuntimePage';
 import BuilderShell from '../builder/BuilderShell';
+import ModeSwitch from './ModeSwitch';
 
 const { Sider, Content, Header } = Layout;
 
@@ -49,10 +50,11 @@ const AppShell: React.FC = () => {
         </div>
       </Sider>
       <Layout>
-        <Header style={{ background: '#fff', padding: '0 24px', borderBottom: '1px solid #f0f0f0' }}>
+        <Header style={{ background: '#fff', padding: '0 24px', borderBottom: '1px solid #f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Typography.Title level={4} style={{ margin: 0, lineHeight: '64px' }}>
             {page?.title}
           </Typography.Title>
+          <ModeSwitch />
         </Header>
         <Content style={{ padding: 24, background: '#f5f5f5', overflow: 'auto' }}>
           {page ? <RuntimePage page={page} /> : <div>Page not found</div>}

@@ -5,12 +5,13 @@ import { ToolOutlined, EyeOutlined } from '@ant-design/icons';
 import type { RootState, AppDispatch } from '../../store';
 import { toggleMode } from '../../store/slices/modeSlice';
 
-const ModeSwitch: React.FC = () => {
+const ModeSwitch: React.FC<{ dark?: boolean }> = ({ dark = false }) => {
   const dispatch = useDispatch<AppDispatch>();
   const mode = useSelector((state: RootState) => state.mode);
+  const textStyle = dark ? { color: 'white' } : undefined;
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: dark ? 'white' : undefined }}>
       <EyeOutlined />
       <Switch
         checked={mode === 'builder'}
@@ -19,7 +20,7 @@ const ModeSwitch: React.FC = () => {
         unCheckedChildren={<EyeOutlined />}
       />
       <ToolOutlined />
-      <Typography.Text style={{ color: 'white' }}>
+      <Typography.Text style={textStyle}>
         {mode === 'builder' ? 'Builder' : 'Runtime'}
       </Typography.Text>
     </div>
